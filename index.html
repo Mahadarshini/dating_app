@@ -1,26 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dating App – Stack Demo</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating App - Stack Operations</title>
+    <link rel="stylesheet" href="index.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>💕 DateStack</h1>
+            <div class="stack-info">Profiles Remaining: <span id="remaining-count">0</span></div>
+        </div>
 
-  <h1>Dating App (Stack Implementation)</h1>
+        <div class="card-container" id="cardContainer">
+            <!-- Profile cards will be dynamically added here -->
+        </div>
 
-  <div class="card" id="profileCard">
-    <h2 id="name"></h2>
-    <p id="age"></p>
-  </div>
+        <div class="button-container" id="buttonContainer">
+            <button class="swipe-button reject-btn" onclick="swipeLeft()">✕</button>
+            <button class="swipe-button accept-btn" onclick="swipeRight()">♥</button>
+        </div>
 
-  <div class="buttons">
-    <button onclick="swipeLeft()">❌ Reject</button>
-    <button onclick="swipeRight()">❤️ Select</button>
-  </div>
+        <div class="stats">
+            <div class="stat-box rejected">
+                <div class="stat-number" id="rejected-count">0</div>
+                <div class="stat-label">Rejected</div>
+            </div>
+            <div class="stat-box selected">
+                <div class="stat-number" id="selected-count">0</div>
+                <div class="stat-label">Selected</div>
+            </div>
+        </div>
 
-  <div id="result"></div>
+        <button class="view-details-btn" onclick="showDetails()">View Details</button>
+    </div>
 
-  <script src="script.js"></script>
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Profile Details</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+
+            <div class="profile-list">
+                <div class="list-header selected-header">Selected Profiles (<span id="modal-selected-count">0</span>)</div>
+                <div id="selected-list"></div>
+            </div>
+
+            <div class="profile-list">
+                <div class="list-header rejected-header">Rejected Profiles (<span id="modal-rejected-count">0</span>)</div>
+                <div id="rejected-list"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
